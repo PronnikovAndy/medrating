@@ -1,15 +1,36 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <Header
+    @change-route="changeRoute"
+  />
+  <Main
+    v-if="route === 'catalog'"
+  />
+  <Favourites
+    v-if="route === 'favourites'"
+  />
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import Header from '@/components/Header';
+import Main from '@/components/Main';
+import Favourites from '@/components/Favourites';
 
 export default {
   name: 'App',
+  data() {
+    return {
+      route: 'catalog',
+    }
+  },
   components: {
-    HelloWorld
+    Header,
+    Main,
+    Favourites
+  },
+  methods: {
+    changeRoute(route) {
+      this.route = route;
+    }
   }
 }
 </script>
