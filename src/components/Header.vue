@@ -1,20 +1,25 @@
 <template>
   <header>
-    <a href="/catalog" @click.prevent="$emit('change-route', 'catalog')">Catalog</a>
-    <a href="/favourites" @click.prevent="$emit('change-route', 'favourites')">Favourites</a>
+    <a
+        href="#"
+        v-for="tab of tabs"
+        @click.prevent="$emit('change-route', tab)"
+        :key="tab"
+    >{{ tab }}</a>
   </header>
 </template>
+
+<script>
+export default {
+  props: ['tabs']
+}
+</script>
 
 <style>
 header {
   display: flex;
   justify-content: center;
   align-items: center;
-}
-
-img {
-  width: 40px;
-  height: 40px;
 }
 
 a {
